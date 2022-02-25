@@ -15,7 +15,7 @@ h1{
     color: rgb(197, 188, 188);
 
 }
-.Board{
+#board{
     
     height: 85vh;
     width: 45vw;
@@ -23,11 +23,11 @@ h1{
     border-color:rgb(197, 188, 188);;
     border-width: 5px;
     display: grid;
-    grid-template-rows: repeat(18 , 1fr);
-    grid-template-columns: repeat(18 , 1fr);
+    grid-template-rows: repeat(25 , 1fr);
+    grid-template-columns: repeat(25 , 1fr);
 }    
 .head{
-    background-color: darkgreen;
+    background-color: rgb(231, 223, 150);
 }
 .food{
     background-color: red;

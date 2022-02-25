@@ -4,7 +4,9 @@ const foodSound = new Audio('music/food.mp3')
 const gameoverSound = new Audio('music/gameover.mp3')
 const moveSound = new Audio('music/move.mp3')
 const gameMusic= new Audio('music/music.mp3')
- 
+const board = document.getElementById('board')
+
+
 let frameSpeed = 2
 let lastRenderTime = 0
 let snakeArr = [
@@ -22,17 +24,18 @@ function fps(current_time){
     
 }
 function gameEngine(){
-    //update the snake and food positions
-
-    //generate and display snake and apple
-    Board.innerHTML = ""
+    board.innerHTML = ""
     snakeArr.forEach((e,index)=>{
-        snakeElement = document.createElement('div')
+        const snakeElement = document.createElement('div')
         snakeElement.style.gridRowStart = e.y
         snakeElement.style.gridColumnStart = e.x
-        snakeElement.classList.add('food')
-        Board.appendChild(snakeElement)
+        snakeElement.classList.add("head")
+        board.append(snakeElement)
+
+
     })
+
 }
+   
 //main logic 
 window.requestAnimationFrame(fps)
