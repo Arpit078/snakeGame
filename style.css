@@ -27,7 +27,14 @@ h1{
     grid-template-columns: repeat(25 , 1fr);
 }    
 .head{
-    background-color: rgb(231, 223, 150);
+    background: radial-gradient(white, rgb(255, 255, 54) ,rgb(79, 253, 36) ,rgb(31, 253, 242) , rgb(46, 46, 253));
+    filter:blur(3px);
+    
+}
+.snakeBody{
+    background: radial-gradient(white, rgb(255, 255, 54) ,rgb(79, 253, 36) ,rgb(31, 253, 242) , rgb(46, 46, 253));
+    filter:blur(3px);
+
 }
 .food{
     background-color: rgba(255, 0, 0, 0.664);
