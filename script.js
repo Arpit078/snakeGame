@@ -12,6 +12,7 @@ let lastRenderTime = 0
 let snakeArr = [
     {x:13 , y:15}
 ]
+let food = {x:20 , y:4}
 
 //game functions
 function fps(current_time){
@@ -34,6 +35,11 @@ function gameEngine(){
 
 
     })
+    foodElement = document.createElement("div")
+    foodElement.style.gridRowStart = food.y
+    foodElement.style.gridColumnStart = food.x
+    foodElement.classList.add("food")
+    board.append(foodElement)
 
 }
    
