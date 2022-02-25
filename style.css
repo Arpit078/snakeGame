@@ -15,7 +15,7 @@ h1{
     color: rgb(197, 188, 188);
 
 }
-.board{
+.Board{
     
     height: 650px;
     width: 650px;
@@ -34,10 +34,6 @@ h1{
 }
 .text{
     display: flex;
-    margin-left: 220px;
-    align-items: center;
-}
-#start{
-    margin-left: 155px;
+    justify-content: center;
     align-items: center;
 }

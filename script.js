@@ -7,6 +7,9 @@ const gameMusic= new Audio('music/music.mp3')
  
 let frameSpeed = 2
 let lastRenderTime = 0
+let snakeArr = [
+    {x:13 , y:15}
+]
 
 //game functions
 function fps(current_time){
@@ -15,8 +18,21 @@ function fps(current_time){
         return
     }
     lastRenderTime = current_time
+    gameEngine()
     
-    
+}
+function gameEngine(){
+    //update the snake and food positions
+
+    //generate and display snake and apple
+    Board.innerHTML = ""
+    snakeArr.forEach((e,index)=>{
+        snakeElement = document.createElement('div')
+        snakeElement.style.gridRowStart = e.y
+        snakeElement.style.gridColumnStart = e.x
+        snakeElement.classList.add('food')
+        Board.appendChild(snakeElement)
+    })
 }
 //main logic 
 window.requestAnimationFrame(fps)
