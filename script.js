@@ -7,7 +7,7 @@ const gameMusic = new Audio('music/music.mp3')
 const board = document.getElementById('board')
 
 
-let frameSpeed = 2
+let frameSpeed = 15
 let lastRenderTime = 0
 let snakeArr = [
     { x: 13, y: 15 }
@@ -39,6 +39,22 @@ function gameEngine() {
         score = 0
 
     }
+    if(snakeArr[0].y === food.y && snakeArr[0].x === food.x){
+        snakeArr.unshift({x : snakeArr[0].x + inputDir.x , y: snakeArr[0].y + inputDir.y})
+        foodSound.play()
+        let a = 2 
+        let b = 22
+        food = {x: Math.round(a + (b-a)*Math.random()),y: Math.round(a + (b-a)*Math.random()) }
+    }
+    //for snake movement
+    for (let i = snakeArr.length - 2; i>=0; i--) { 
+        snakeArr[i+1] = {...snakeArr[i]};
+    }
+
+    snakeArr[0].x += inputDir.x;
+    snakeArr[0].y += inputDir.y;
+    
+    
     board.innerHTML = ""
     snakeArr.forEach((e, index) => {
         const snakeElement = document.createElement('div')
@@ -68,26 +84,26 @@ window.addEventListener("keydown", e => {
     inputDir = { x: 0, y: 1 }
     moveSound.play()
     switch (e.key) {
-        case "ArrowUp":
-            console.log("ArrowUp")
+        case "w":
+            
             inputDir.x = 0
             inputDir.y = -1
             break;
-        case "ArrowDown":
-            console.log("ArrowDown")
+        case "s":
+            
             inputDir.x= 0
             inputDir.y= +1
             break
-        case "ArrowLeft":
-            console.log("ArrowLeft")
+        case "a":
+            
             inputDir.x= -1
             inputDir.y= 0
             break
-        case "ArrowRight":
-            console.log("ArrowRight")
+        case "d":
+            
             inputDir.x= +1
             inputDir.y= 0
-            console.log(inputDir)
+            
             break
         default:
             break;
