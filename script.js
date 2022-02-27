@@ -5,6 +5,8 @@ const gameoverSound = new Audio('music/gameover.mp3')
 const moveSound = new Audio('music/move.mp3')
 const gameMusic = new Audio('music/music.mp3')
 const board = document.getElementById('board')
+var scorebox = document.getElementById("scorebox")
+var highscorebox = document.getElementById("highscorebox")
 
 
 let frameSpeed = 15
@@ -12,8 +14,11 @@ let lastRenderTime = 0
 let snakeArr = [
     { x: 13, y: 15 }
 ]
-let food = { x: 20, y: 4 }
-let score = 0
+let score = 0 
+let a = 2 
+let b = 22
+let food = {x: Math.round(a + (b-a)*Math.random()),y: Math.round(a + (b-a)*Math.random()) }
+
 
 //game functions
 function fps(current_time) {
@@ -25,23 +30,32 @@ function fps(current_time) {
     gameEngine()
 
 }
-function collided(snakeArr){
-    return false
+function collided(snake){
+    if(snake[0].x >= 25 || snake[0].x <=0 || snake[0].y >= 25 || snake[0].y <=0){
+        return true;
+    }
+
 }
 function gameEngine() {
     if(collided(snakeArr)){
         gameoverSound.play()
-        musicSound.pause()
         inputDir = {x:0 , y: 0}
-        alert("Game Over, press any key to restart!")
-        let snakeArr = [{ x: 13, y: 15 }]
-        musicSound.play()
+        alert("Game Over, press space bar to restart!")
+        snakeArr = [{ x: 13, y: 15 }]
+        
         score = 0
 
     }
     if(snakeArr[0].y === food.y && snakeArr[0].x === food.x){
         snakeArr.unshift({x : snakeArr[0].x + inputDir.x , y: snakeArr[0].y + inputDir.y})
         foodSound.play()
+        score += 1
+        if(score>hiscorevalue){
+            hiscorevalue = score
+            localStorage.setItem("hiscore", JSON.stringify(hiscorevalue));
+            highscorebox.innerHTML = '<p>"High Score: " + hiscorevalue</p>'
+        }
+        scorebox.innerHTML = "Score: " + score;
         let a = 2 
         let b = 22
         food = {x: Math.round(a + (b-a)*Math.random()),y: Math.round(a + (b-a)*Math.random()) }
@@ -79,6 +93,15 @@ function gameEngine() {
 }
 
 //main logic 
+let hiscore = localStorage.getItem("hiscore")
+if(hiscore === null){
+    hiscorevalue = 0
+    localStorage.setItem("hiscore", JSON.stringify(hiscorevalue))
+}
+else{
+    hiscorevalue = JSON.parse(hiscore);
+    highscorebox.innerHTML = "High Score: " + hiscore;
+}
 window.requestAnimationFrame(fps)
 window.addEventListener("keydown", e => {
     inputDir = { x: 0, y: 1 }
