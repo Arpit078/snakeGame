@@ -32,6 +32,7 @@ function fps(current_time) {
 }
 function collided(snake){
     if(snake[0].x >= 25 || snake[0].x <=0 || snake[0].y >= 25 || snake[0].y <=0){
+        
         return true;
     }
 
@@ -40,9 +41,13 @@ function gameEngine() {
     if(collided(snakeArr)){
         gameoverSound.play()
         inputDir = {x:0 , y: 0}
+        
         alert("Game Over, press space bar to restart!")
         snakeArr = [{ x: 13, y: 15 }]
         score = 0
+        scorebox.innerHTML = "Score: " + score
+
+        
 
     }
     if(snakeArr[0].y === food.y && snakeArr[0].x === food.x){

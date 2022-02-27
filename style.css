@@ -47,7 +47,7 @@ h1{
 }
 .scores{
     display: flex;
-    background: linear-gradient(rgb(90, 90, 94), rgb(49, 49, 63));
+    background: linear-gradient(rgb(2, 2, 31), rgb(4, 4, 65), rgb(11, 34, 83), rgb(13, 39, 97));
     height: 10vh;
     flex-direction: column;
     justify-content: center;
@@ -55,4 +55,10 @@ h1{
     font-size: larger;
     font-weight: 800;
     color: aquamarine;
+}
+h2{
+    font-size: larger;
+    font-weight: 800;
+    color: aquamarine;
+    
 }
