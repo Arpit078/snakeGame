@@ -42,7 +42,6 @@ function gameEngine() {
         inputDir = {x:0 , y: 0}
         alert("Game Over, press space bar to restart!")
         snakeArr = [{ x: 13, y: 15 }]
-        
         score = 0
 
     }
@@ -53,7 +52,7 @@ function gameEngine() {
         if(score>hiscorevalue){
             hiscorevalue = score
             localStorage.setItem("hiscore", JSON.stringify(hiscorevalue));
-            highscorebox.innerHTML = '<p>"High Score: " + hiscorevalue</p>'
+            highscorebox.innerHTML = "High Score: " + hiscorevalue
         }
         scorebox.innerHTML = "Score: " + score;
         let a = 2 
